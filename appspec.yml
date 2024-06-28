@@ -14,18 +14,15 @@ permissions:
 
 hooks:
   BeforeInstall:
-    - location: ***.sh
-      timeout: 300
+    - timeout: 300
       runas: root
 
   AfterInstall:
-    - location: ***.sh
-      timeout: 300
+    - timeout: 300
       runas: root
 
   ApplicationStart:
-    - location: ***.sh
-      timeout: 300
+    - timeout: 300
       runas: root
 
   ValidateService:
