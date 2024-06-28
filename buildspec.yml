@@ -1,24 +1,23 @@
-version: 0.2
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      timeout: 300
+      runas: root
+  ValidateService:
+    - location: scripts/validate_service.sh
+      timeout: 300
+      runas: root
 
-phases:
-  install:
-    runtime_versions:
-      nodejs: latest
-    commands:
-      - echo Install phase
-  pre_build:
-    commands:
-      - echo pre-build phase
-  build:
-    commands:
-      - echo build phase
-  post_build:
-    commands:
-      - echo post-build phase
-      - echo Build completed on `date`
-      - echo Artifacts copied to S3
-
-artifacts:
-  files:
-    - '**/*'
-  name: scenery_app
